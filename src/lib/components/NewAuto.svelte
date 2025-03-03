@@ -43,8 +43,8 @@
 
 <Modal bind:open={createModalOpen} onclose={closeModal} title="Create Auto">
   <div class="flex flex-col md:flex-row items-center gap-2">
-    <InputUI placeholder="Name" bind:value={name} />
-    <SelectUI options={["Red", "Blue"]} bind:value={alliance}/>
+    <InputUI placeholder="Name" bind:value={name} name="Auto name"/>
+    <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance"/>
     <ButtonUI Class="bg-primary w-full" name="Create" onclick={createAuto}>Create</ButtonUI>
   </div>
 </Modal>
