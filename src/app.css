@@ -1,2 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import 'tailwindcss';
-@plugin '@tailwindcss/forms'
+@plugin '@tailwindcss/forms';
+
+:root {
+    --bg-main: var(--color-neutral-100);
+    --bg-secondary: var(--color-neutral-50);
+    --bg-tertiary: var(--color-neutral-200);
+    --content-main: var(--color-black);
+
+    @variant dark {
+        --bg-main: var(--color-neutral-950);
+        --bg-secondary: var(--color-neutral-900);
+        --bg-tertiary: var(--color-neutral-800);
+        --content-main: var(--color-white);
+    }
+}
+
+@theme inline {
+    --color-base-100: var(--bg-main);
+    --color-base-200: var(--bg-secondary);
+    --color-base-300: var(--bg-tertiary);
+    --color-base-content: var(--content-main);
+}
+
+@theme {
+    --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif;
+    --color-primary: #005eab;
+    --color-error: #d43232;
+}
+
+body {
+    font-family: var(--font-sans), sans-serif;
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+}
