@@ -1,21 +1,27 @@
 ﻿<script lang="ts">
   import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
   import { db } from "$lib/db";
+  import Modal from "$lib/components/shared/Modal.svelte";
+  import SelectUI from "$lib/components/shared/SelectUI.svelte";
+  import InputUI from "$lib/components/shared/InputUI.svelte";
 
   let { auto } = $props();
+
+  let deleteModalOpen = $state(false);
   async function deleteAuto() {
-    await db.autos
-      .delete(auto.id);
+    await db.autos.delete(auto.id);
   }
 </script>
 
-<div class="bg-base-300 flex items-center justify-between rounded-lg p-4 border-t-5 {auto.alliance === 'red' ? 'border-t-error' : 'border-t-primary'}">
+<div
+  class="bg-base-300 flex items-center justify-between rounded-lg border-t-5 p-4 {auto.alliance ===
+  'red'
+    ? 'border-t-error'
+    : 'border-t-primary'}"
+>
   <h2>{auto.name}</h2>
   <p>
-    <ButtonUI
-      Class="border-base-content!"
-      name="Edit auto"
-    >
+    <ButtonUI Class="border-base-content!" name="Edit auto">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -34,7 +40,7 @@
     <ButtonUI
       Class="border-error! text-error"
       name="Delete auto"
-      onclick={deleteAuto}
+      onclick={() => (deleteModalOpen = true)}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,3 +59,10 @@
     </ButtonUI>
   </p>
 </div>
+
+<Modal bind:open={deleteModalOpen} title="Delete {auto.name}?">
+    <div class="flex flex-col md:flex-row items-center gap-2">
+      <ButtonUI Class="bg-error w-full" name="Confirm deletion" onclick={deleteAuto}>Yes</ButtonUI>
+      <ButtonUI Class="bg-primary w-full" name="Cancel deletion" onclick={() => deleteModalOpen = false}>No</ButtonUI>
+    </div>
+</Modal>
