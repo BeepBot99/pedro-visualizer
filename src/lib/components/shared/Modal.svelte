@@ -2,6 +2,21 @@
   import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
 
   let { open = $bindable(false), children, onclose = () => {}, title } = $props();
+
+  function handleKeydown(event: KeyboardEvent) {
+    if (event.key === "Escape") {
+      open = false;
+      onclose();
+    }
+  };
+
+  $effect(() => {
+    if (open) {
+      window.addEventListener("keydown", handleKeydown);
+    } else {
+      window.removeEventListener("keydown", handleKeydown);
+    }
+  })
 </script>
 
 {#if open}
@@ -15,7 +30,7 @@
   >
     <div
       class="bg-base-200 w-full rounded-lg p-4 sm:w-auto"
-      onclick={(e) => e.stopPropagation()}
+      onclick={e => e.stopPropagation()}
       role="presentation"
     >
       <div class="flex items-center justify-between">

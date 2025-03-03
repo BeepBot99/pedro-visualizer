@@ -1,4 +1,4 @@
-﻿<script>
+﻿<script lang="ts">
   import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
   import { db } from "$lib/db";
   import Modal from "$lib/components/shared/Modal.svelte";
@@ -10,7 +10,8 @@
 
   let createModalOpen = $state(false);
 
-  async function createAuto() {
+  async function createAuto(e: Event) {
+    e.preventDefault();
     if (!name) return;
     const id = await db.autos
       .add({
@@ -42,9 +43,9 @@
 </ButtonUI>
 
 <Modal bind:open={createModalOpen} onclose={closeModal} title="Create Auto">
-  <div class="flex flex-col md:flex-row items-center gap-2">
-    <InputUI placeholder="Name" bind:value={name} name="Auto name"/>
-    <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance"/>
-    <ButtonUI Class="bg-primary w-full" name="Create" onclick={createAuto}>Create</ButtonUI>
-  </div>
+  <form class="flex flex-col md:flex-row items-center gap-2" onsubmit={createAuto}>
+      <InputUI placeholder="Name" bind:value={name} name="Auto name"/>
+      <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance"/>
+      <ButtonUI type="submit" Class="bg-primary w-full" name="Create">Create</ButtonUI>
+  </form>
 </Modal>
