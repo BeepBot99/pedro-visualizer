@@ -2,8 +2,6 @@
   import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
   import { db } from "$lib/db";
   import Modal from "$lib/components/shared/Modal.svelte";
-  import SelectUI from "$lib/components/shared/SelectUI.svelte";
-  import InputUI from "$lib/components/shared/InputUI.svelte";
 
   let { auto } = $props();
 
