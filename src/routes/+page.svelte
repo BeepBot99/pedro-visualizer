@@ -1,27 +1,28 @@
-<script>
+<script lang="ts">
   import AutoCard from "$lib/components/AutoCard.svelte";
   import { db } from "$lib/db";
   import { liveQuery } from "dexie";
   import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
   import NewAuto from "$lib/components/NewAuto.svelte";
+  import { onMount } from "svelte";
+  import navColor from "$lib/navColor";
 
-  let autos = liveQuery(
-    () => db.autos.toArray()
-  );
+  let autos = liveQuery(() => db.autos.toArray());
+
+  onMount(() => {
+    navColor.set("");
+  });
 </script>
 
 <svelte:head>
   <title>Autos | NextFTC++</title>
 </svelte:head>
 
-<div class="bg-base-200 m-2 flex-1 rounded-lg p-4">
+<div class="bg-base-200 m-2 h-full rounded-lg p-4">
   <div class="flex items-center justify-between">
     <h1 class="text-3xl">Autos</h1>
     <p>
-      <ButtonUI
-        Class="border-base-content!"
-        name="Upload auto"
-      >
+      <ButtonUI Class="border-base-content!" name="Upload auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -48,10 +49,12 @@
           <AutoCard {auto} />
         {/each}
       {:else}
-        <p class="col-span-full text-center sm:text-left text-lg">No autos found (yet). Create your first one now!</p>
+        <p class="col-span-full text-center text-lg sm:text-left">
+          No autos found (yet). Create your first one now!
+        </p>
       {/if}
     {:else}
-      <p class="col-span-full text-center sm:text-left text-lg">Loading...</p>
+      <p class="col-span-full text-center text-lg sm:text-left">Loading...</p>
     {/if}
   </div>
 </div>

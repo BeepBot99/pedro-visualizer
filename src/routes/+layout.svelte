@@ -4,9 +4,9 @@
 	let { children } = $props();
 </script>
 
-<div class="min-h-dvh flex flex-col">
-	<Navbar />
-	<main class="flex-1 flex flex-col">
+<Navbar />
+<div class="h-[calc(100dvh-5rem)]">
+	<main class="h-full">
 		{@render children()}
 	</main>
 </div>

@@ -22,6 +22,7 @@
     --color-base-200: var(--bg-secondary);
     --color-base-300: var(--bg-tertiary);
     --color-base-content: var(--content-main);
+    --color-success: var(--color-green-500);
 }
 
 @theme {
@@ -34,4 +35,18 @@ body {
     font-family: var(--font-sans), sans-serif;
     background-color: var(--color-base-100);
     color: var(--color-base-content);
+}
+
+.slider {
+    @apply
+    [&::-webkit-slider-runnable-track]:rounded-full
+    [&::-webkit-slider-runnable-track]:bg-black/10
+    [&::-webkit-slider-runnable-track]:dark:bg-neutral-700
+    [&::-webkit-slider-runnable-track]:shadow-inner
+    [&::-webkit-slider-thumb]:appearance-none
+    [&::-webkit-slider-thumb]:h-5
+    [&::-webkit-slider-thumb]:w-5
+    [&::-webkit-slider-thumb]:rounded-full
+    [&::-webkit-slider-thumb]:cursor-pointer
+    [&::-webkit-slider-thumb]:bg-success;
 }

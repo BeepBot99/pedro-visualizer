@@ -1,9 +1,10 @@
 ﻿<script lang="ts">
   import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
-  import { db } from "$lib/db";
+  import { type Auto, db } from "$lib/db";
   import Modal from "$lib/components/shared/Modal.svelte";
+  import { goto } from "$app/navigation";
 
-  let { auto } = $props();
+  let { auto }: { auto: Auto } = $props();
 
   let deleteModalOpen = $state(false);
   async function deleteAuto() {
@@ -19,7 +20,7 @@
 >
   <h2>{auto.name}</h2>
   <p>
-    <ButtonUI Class="border-base-content!" name="Edit auto">
+    <ButtonUI onclick={() => goto(`/auto/${auto.id}`)} Class="border-base-content!" name="Edit auto">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
