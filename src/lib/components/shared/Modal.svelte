@@ -8,7 +8,7 @@
       open = false;
       onclose();
     }
-  };
+  }
 
   $effect(() => {
     if (open) {
