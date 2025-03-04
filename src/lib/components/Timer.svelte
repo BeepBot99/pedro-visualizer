@@ -49,7 +49,9 @@
 
 <div
   id="timer"
-  class="bg-base-100/20 hover:bg-base-100/30 absolute {timerAtBottom ? 'bottom-0' : 'top-0'} transition-bg flex h-12 w-full items-center rounded-b-lg duration-150"
+  class="bg-base-100/20 hover:bg-base-100/30 absolute {timerAtBottom
+    ? 'bottom-0'
+    : 'top-0'} flex h-12 w-full items-center rounded-b-lg transition-colors duration-150"
 >
   {#if isPaused()}
     <ButtonUI onclick={play} name="Play">

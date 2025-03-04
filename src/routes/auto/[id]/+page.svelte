@@ -49,7 +49,7 @@
   <div class="m-2 flex h-full flex-col gap-2 md:flex-row">
     <div class="relative aspect-square overflow-hidden">
       <img
-        class="pointer-events-none rounded-lg"
+        class="pointer-events-none rounded-lg select-none"
         src="https://visualizer.pedropathing.com/fields/intothedeep.webp"
         alt="Field map"
       />
