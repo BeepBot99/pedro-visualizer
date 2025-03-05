@@ -1,22 +1,28 @@
 ﻿<script lang="ts">
   import ButtonUI from "$lib/components/ButtonUI.svelte";
+  import hotkeys from "hotkeys-js";
 
-  let { open = $bindable(false), children, onclose = () => {}, title } = $props();
-
-  function handleKeydown(event: KeyboardEvent) {
-    if (event.key === "Escape") {
-      open = false;
-      onclose();
-    }
-  }
+  let {
+    open = $bindable(false),
+    children,
+    onclose = () => {},
+    onenter = () => {},
+    title
+  } = $props();
 
   $effect(() => {
     if (open) {
-      window.addEventListener("keydown", handleKeydown);
+      hotkeys("esc", () => {
+        open = false;
+        onclose();
+      });
+      hotkeys("enter", () => onenter());
     } else {
-      window.removeEventListener("keydown", handleKeydown);
+      hotkeys.unbind("esc");
+      hotkeys.unbind("enter");
+      onclose();
     }
-  })
+  });
 </script>
 
 {#if open}
@@ -30,7 +36,7 @@
   >
     <div
       class="bg-base-200 w-full rounded-lg p-4 sm:w-auto"
-      onclick={e => e.stopPropagation()}
+      onclick={(e) => e.stopPropagation()}
       role="presentation"
     >
       <div class="flex items-center justify-between">

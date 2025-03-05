@@ -1,23 +1,23 @@
 ﻿<script lang="ts">
-  import Timer from "../Timer.svelte";
-  import { TimeManager } from "$lib/TimeManager.svelte";
   import { onMount } from "svelte";
   import hotkeys from "hotkeys-js";
   import { goto } from "$app/navigation";
   import type { PageProps } from "./$types";
-
-  const timeManager = new TimeManager();
+  import { TimeManager } from "$lib/TimeManager.svelte";
+  import Timer from "../../Timer.svelte";
 
   let { data }: PageProps = $props();
 
   onMount(() => {
     hotkeys("[", () => {
-      goto(`/auto/${data.id}/commands`);
+      goto(`/auto/${data.id}`);
     });
     hotkeys("]", () => {
-      goto(`/auto/${data.id}/paths`);
-    })
+      goto(`/auto/${data.id}/commands`);
+    });
   });
+
+  const timeManager = new TimeManager();
 </script>
 
 <div class="m-2 flex h-full flex-col gap-2 lg:flex-row">

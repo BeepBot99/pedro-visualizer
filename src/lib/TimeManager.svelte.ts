@@ -23,6 +23,15 @@ export class TimeManager {
     this.timeline.play();
   };
 
+  toggle = () => {
+    this.paused = !this.paused;
+    if (this.paused) {
+      this.timeline.pause();
+    } else {
+      this.timeline.play();
+    }
+  };
+
   // Arrow function for skipTo method
   skipTo = (progress: number) => {
     this.pause();

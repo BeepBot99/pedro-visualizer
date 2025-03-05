@@ -11,8 +11,7 @@
 
   let createModalOpen = $state(false);
 
-  async function createAuto(e: Event) {
-    e.preventDefault();
+  async function createAuto() {
     if (!name) return;
     const id = await db.autos
       .add({
@@ -22,12 +21,7 @@
       })
       .catch(console.error);
     console.log(`Auto created with id ${id}`);
-    closeModal();
-  }
-
-  function closeModal() {
     createModalOpen = false;
-    name = "";
   }
 </script>
 
@@ -44,11 +38,23 @@
   </svg>
 </ButtonUI>
 
-<Modal bind:open={createModalOpen} onclose={closeModal} title="Create Auto">
-  <form class="flex flex-col items-center gap-2 md:flex-row" onsubmit={createAuto}>
-    <InputUI placeholder="Name" bind:value={name} name="Auto name" />
+<Modal
+  bind:open={createModalOpen}
+  onclose={() => (name = "")}
+  onenter={createAuto}
+  title="Create Auto"
+>
+  <div class="flex flex-col items-center gap-2 md:flex-row">
+    <InputUI
+      placeholder="Name"
+      bind:value={name}
+      name="Auto name"
+      onmount={(node: HTMLInputElement) => node.focus()}
+    />
     <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance" />
     <SelectUI options={["Kotlin", "Java"]} bind:value={language} name="Select language"></SelectUI>
-    <ButtonUI type="submit" Class="bg-primary w-full" name="Create">Create</ButtonUI>
-  </form>
+    <ButtonUI type="button" onclick={createAuto} Class="bg-primary w-full" name="Create"
+      >Create</ButtonUI
+    >
+  </div>
 </Modal>

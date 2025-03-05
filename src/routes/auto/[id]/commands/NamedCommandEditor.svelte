@@ -11,9 +11,9 @@
   hljs.registerLanguage("java", java);
   hljs.registerLanguage("kotlin", kotlin);
 
-  const highlight = (code, syntax) =>
+  const highlight = (code: string, syntax?: string) =>
     hljs.highlight(code, {
-      language: syntax
+      language: syntax!
     }).value;
 
   let { command } = $props();
@@ -21,6 +21,10 @@
   let code = $state(command.code);
 
   let renaming = $state(false);
+
+  $effect(() => {
+    if (!renaming && !name) name = "New Command";
+  });
 
   let name = $state(command.name);
   function deleteCommand() {
@@ -70,7 +74,7 @@
           if (e.key === "Enter" || e.key === "Escape") renaming = false;
         }}
         oninput={renameCommand}
-        onmount={(node) => node.focus()}
+        onmount={(node: HTMLInputElement) => node.focus()}
       />
     {:else}
       <button
@@ -109,6 +113,12 @@
     </div>
   </div>
   <div class="border-base-content/50 my-2 ml-4 rounded-lg border-1 p-4 shadow-lg">
-    <CodeJar tab="  " on:change={editCode} syntax={command.language} {highlight} bind:value={code} />
+    <CodeJar
+      tab="  "
+      on:change={editCode}
+      syntax={command.language}
+      {highlight}
+      bind:value={code}
+    />
   </div>
 </div>

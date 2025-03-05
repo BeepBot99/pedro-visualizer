@@ -1,8 +1,9 @@
 ﻿<script lang="ts">
   import ButtonUI from "$lib/components/ButtonUI.svelte";
   import { gsap } from "gsap";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import type { TimeManager } from "$lib/TimeManager.svelte.js";
+  import hotkeys from "hotkeys-js";
 
   let { timer }: { timer: TimeManager } = $props();
 
@@ -22,6 +23,15 @@
       },
       0
     );
+    hotkeys("space,k", timer.toggle);
+    hotkeys("up,down", () => {
+      if (timerAtBottom) sendToTop();
+      else sendToBottom();
+    });
+  });
+
+  onDestroy(() => {
+    hotkeys.unbind();
   });
 
   function sendToTop() {

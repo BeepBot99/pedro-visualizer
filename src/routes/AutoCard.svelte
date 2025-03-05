@@ -20,7 +20,11 @@
 >
   <h2>{auto.name}</h2>
   <div>
-    <ButtonUI onclick={() => goto(`/auto/${auto.id}`)} Class="border-base-content!" name="Edit auto">
+    <ButtonUI
+      onclick={() => goto(`/auto/${auto.id}`)}
+      Class="border-base-content!"
+      name="Edit auto"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -59,9 +63,13 @@
   </div>
 </div>
 
-<Modal bind:open={deleteModalOpen} title="Delete {auto.name}?">
-    <div class="flex flex-col md:flex-row items-center gap-2">
-      <ButtonUI Class="bg-error w-full" name="Confirm deletion" onclick={deleteAuto}>Yes</ButtonUI>
-      <ButtonUI Class="bg-primary w-full" name="Cancel deletion" onclick={() => deleteModalOpen = false}>No</ButtonUI>
-    </div>
+<Modal bind:open={deleteModalOpen} title="Delete {auto.name}?" onenter={deleteAuto}>
+  <div class="flex flex-col items-center gap-2 md:flex-row">
+    <ButtonUI Class="bg-error w-full" name="Confirm deletion" onclick={deleteAuto}>Yes</ButtonUI>
+    <ButtonUI
+      Class="bg-primary w-full"
+      name="Cancel deletion"
+      onclick={() => (deleteModalOpen = false)}>No</ButtonUI
+    >
+  </div>
 </Modal>

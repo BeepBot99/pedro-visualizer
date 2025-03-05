@@ -4,6 +4,9 @@
   import type { PageProps } from "./$types";
   import { db } from "$lib/db";
   import { liveQuery } from "dexie";
+  import { onMount } from "svelte";
+  import hotkeys from "hotkeys-js";
+  import { goto } from "$app/navigation";
 
   let { data }: PageProps = $props();
 
@@ -17,6 +20,15 @@
       language: data.auto?.language || "java"
     });
   }
+
+  onMount(() => {
+    hotkeys("[", () => {
+      goto(`/auto/${data.id}/paths`);
+    });
+    hotkeys("]", () => {
+      goto(`/auto/${data.id}`);
+    })
+  });
 </script>
 
 <div class="bg-base-200 m-2 h-full overflow-y-auto rounded-lg p-4">
