@@ -11,17 +11,21 @@ npm install
 npm run dev -- --open
 ```
 
-## Technologies
+## Languages & Frameworks
 
-- SvelteKit
+- Svelte/SvelteKit
 - HTML
 - TypeScript
-- TailwindCSS
 - Vite
+
+## Technologies
+
+- TailwindCSS
 - Dexie.js
 - GSAP
-- ESLint
-- Prettier
+- CodeJar
+- Highlight.js
+- Svelte CodeJar
 
 ## License
 

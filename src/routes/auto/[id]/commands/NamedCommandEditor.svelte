@@ -3,22 +3,26 @@
   import InputUI from "$lib/components/InputUI.svelte";
   import { db } from "$lib/db";
   import { onMount } from "svelte";
-  import { basicSetup } from "codemirror";
-  import { EditorView, keymap, type ViewUpdate } from "@codemirror/view";
-  import { indentWithTab } from "@codemirror/commands";
-  import { java } from "@codemirror/lang-java";
-  import { barf, ayuLight } from "thememirror";
+  import { CodeJar } from "@novacbn/svelte-codejar";
+  import hljs from "highlight.js/lib/core";
+  import java from "highlight.js/lib/languages/java";
+  import kotlin from "highlight.js/lib/languages/kotlin";
+
+  hljs.registerLanguage("java", java);
+  hljs.registerLanguage("kotlin", kotlin);
+
+  const highlight = (code, syntax) =>
+    hljs.highlight(code, {
+      language: syntax
+    }).value;
 
   let { command } = $props();
 
-  let editor: HTMLDivElement;
+  let code = $state(command.code);
 
   let renaming = $state(false);
 
   let name = $state(command.name);
-
-  let theme = ayuLight;
-
   function deleteCommand() {
     db.commands.delete(command.id);
   }
@@ -32,29 +36,21 @@
       });
   }
 
-  function editCode(update: ViewUpdate) {
+  function editCode() {
     db.commands
       .where("id")
       .equals(command.id)
       .modify((command) => {
-        command.code = update.state.doc.toString();
+        command.code = code;
       });
   }
 
   onMount(() => {
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      theme = barf;
-    new EditorView({
-      parent: editor,
-      doc: command.code,
-      extensions: [
-        basicSetup,
-        java(),
-        keymap.of([indentWithTab]),
-        theme,
-        EditorView.updateListener.of(editCode)
-      ]
-    });
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      import("highlight.js/styles/atom-one-dark.min.css");
+    } else {
+      import("highlight.js/styles/atom-one-light.min.css");
+    }
   });
 </script>
 
@@ -112,5 +108,7 @@
       </ButtonUI>
     </div>
   </div>
-  <div bind:this={editor} class="my-2 pl-4"></div>
+  <div class="border-base-content/50 my-2 ml-4 rounded-lg border-1 p-4 shadow-lg">
+    <CodeJar tab="  " on:change={editCode} syntax={command.language} {highlight} bind:value={code} />
+  </div>
 </div>

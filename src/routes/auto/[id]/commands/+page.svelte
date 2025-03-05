@@ -7,13 +7,14 @@
 
   let { data }: PageProps = $props();
 
-  let commands = liveQuery(() => db.commands.where("autoId").equals(data.id).toArray());
+  let commands = liveQuery(() => db.commands.where("autoId").equals(data.id!).toArray());
 
   async function addCommand() {
     await db.commands.add({
       autoId: data.auto!.id,
       name: "New Command",
-      code: "// Enter the code for your command here"
+      code: "// Enter the code for your command here",
+      language: data.auto?.language || "java"
     });
   }
 </script>

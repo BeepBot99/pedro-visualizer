@@ -7,6 +7,7 @@
 
   let name = $state("");
   let alliance = $state("Red");
+  let language = $state("Kotlin");
 
   let createModalOpen = $state(false);
 
@@ -16,11 +17,12 @@
     const id = await db.autos
       .add({
         name,
-        alliance: alliance.toLowerCase()
+        alliance: alliance.toLowerCase(),
+        language: language.toLowerCase()
       })
       .catch(console.error);
     console.log(`Auto created with id ${id}`);
-    closeModal()
+    closeModal();
   }
 
   function closeModal() {
@@ -29,7 +31,7 @@
   }
 </script>
 
-<ButtonUI Class="bg-primary" name="New auto" onclick={() => createModalOpen = true}>
+<ButtonUI Class="bg-primary" name="New auto" onclick={() => (createModalOpen = true)}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -43,9 +45,10 @@
 </ButtonUI>
 
 <Modal bind:open={createModalOpen} onclose={closeModal} title="Create Auto">
-  <form class="flex flex-col md:flex-row items-center gap-2" onsubmit={createAuto}>
-      <InputUI placeholder="Name" bind:value={name} name="Auto name"/>
-      <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance"/>
-      <ButtonUI type="submit" Class="bg-primary w-full" name="Create">Create</ButtonUI>
+  <form class="flex flex-col items-center gap-2 md:flex-row" onsubmit={createAuto}>
+    <InputUI placeholder="Name" bind:value={name} name="Auto name" />
+    <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance" />
+    <SelectUI options={["Kotlin", "Java"]} bind:value={language} name="Select language"></SelectUI>
+    <ButtonUI type="submit" Class="bg-primary w-full" name="Create">Create</ButtonUI>
   </form>
 </Modal>

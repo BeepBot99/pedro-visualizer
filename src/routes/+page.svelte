@@ -36,7 +36,7 @@
     </div>
   </div>
   <hr class="my-4 rounded-full" />
-  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7">
+  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
     {#if $autos}
       {#if $autos.length > 0}
         {#each $autos as auto (auto.id)}

@@ -4,6 +4,7 @@ interface Auto {
   id: number;
   name: string;
   alliance: string;
+  language: string;
 }
 
 interface NamedCommand {
@@ -11,6 +12,7 @@ interface NamedCommand {
   id: number;
   name: string;
   code: string;
+  language: string;
 }
 
 const db = new Dexie("AutosDatabase") as Dexie & {
