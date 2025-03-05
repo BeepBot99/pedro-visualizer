@@ -1,7 +1,7 @@
 ﻿<script lang="ts">
-  import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/ButtonUI.svelte";
   import { type Auto, db } from "$lib/db";
-  import Modal from "$lib/components/shared/Modal.svelte";
+  import Modal from "$lib/components/Modal.svelte";
   import { goto } from "$app/navigation";
 
   let { auto }: { auto: Auto } = $props();

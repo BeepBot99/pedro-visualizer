@@ -1,9 +1,9 @@
 ﻿<script lang="ts">
-  import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/ButtonUI.svelte";
   import { db } from "$lib/db";
-  import Modal from "$lib/components/shared/Modal.svelte";
-  import InputUI from "$lib/components/shared/InputUI.svelte";
-  import SelectUI from "$lib/components/shared/SelectUI.svelte";
+  import Modal from "$lib/components/Modal.svelte";
+  import InputUI from "$lib/components/InputUI.svelte";
+  import SelectUI from "$lib/components/SelectUI.svelte";
 
   let name = $state("");
   let alliance = $state("Red");

@@ -1,5 +1,5 @@
 ﻿<script lang="ts">
-  import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/ButtonUI.svelte";
 
   let { open = $bindable(false), children, onclose = () => {}, title } = $props();
 

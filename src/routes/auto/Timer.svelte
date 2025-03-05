@@ -1,10 +1,28 @@
-﻿<script>
-  import { isPaused, pause, play, setProgress } from "$lib/timer.svelte";
-  import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
+﻿<script lang="ts">
+  import ButtonUI from "$lib/components/ButtonUI.svelte";
   import { gsap } from "gsap";
+  import { onMount } from "svelte";
+  import type { TimeManager } from "$lib/TimeManager.svelte.js";
+
+  let { timer }: { timer: TimeManager } = $props();
 
   let timerAtBottom = $state(true);
   let sliderValue = $state(0);
+
+  onMount(() => {
+    timer.timeline.fromTo(
+      ".slider",
+      {
+        value: 0
+      },
+      {
+        value: 1,
+        duration: 1,
+        ease: "none"
+      },
+      0
+    );
+  });
 
   function sendToTop() {
     const tl = gsap.timeline();
@@ -53,8 +71,8 @@
     ? 'bottom-0'
     : 'top-0'} flex h-12 w-full items-center rounded-b-lg transition-colors duration-150"
 >
-  {#if isPaused()}
-    <ButtonUI onclick={play} name="Play">
+  {#if timer.paused}
+    <ButtonUI onclick={timer.play} name="Play">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -71,7 +89,7 @@
       </svg>
     </ButtonUI>
   {:else}
-    <ButtonUI onclick={pause} name="Pause">
+    <ButtonUI onclick={timer.pause} name="Pause">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -91,7 +109,7 @@
     max="1"
     step="0.000001"
     class="slider h-full w-full flex-1 appearance-none focus:outline-none"
-    oninput={() => setProgress(sliderValue)}
+    oninput={() => timer.skipTo(sliderValue)}
   />
   {#if timerAtBottom}
     <ButtonUI onclick={sendToTop} name="Bring timer to top" Class="bg-primary">
@@ -106,7 +124,7 @@
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+          d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
         />
       </svg>
     </ButtonUI>
@@ -123,7 +141,7 @@
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+          d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
         />
       </svg>
     </ButtonUI>

@@ -1,17 +1,11 @@
 <script lang="ts">
-  import AutoCard from "$lib/components/AutoCard.svelte";
+  import AutoCard from "./AutoCard.svelte";
   import { db } from "$lib/db";
   import { liveQuery } from "dexie";
-  import ButtonUI from "$lib/components/shared/ButtonUI.svelte";
-  import NewAuto from "$lib/components/NewAuto.svelte";
-  import { onMount } from "svelte";
-  import navColor from "$lib/navColor";
+  import ButtonUI from "$lib/components/ButtonUI.svelte";
+  import NewAuto from "./NewAuto.svelte";
 
   let autos = liveQuery(() => db.autos.toArray());
-
-  onMount(() => {
-    navColor.set("");
-  });
 </script>
 
 <svelte:head>
