@@ -2,6 +2,6 @@
 
 export const load: PageLoad = async () => {
   return {
-    tab: "auto"
+    tab: "commands"
   };
 };

@@ -36,7 +36,11 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@codemirror/lang-java": "^6.0.1",
+		"@codemirror/view": "^6.36.4",
+		"codemirror": "^6.0.1",
 		"dexie": "^4.0.11",
-		"gsap": "^3.12.7"
+		"gsap": "^3.12.7",
+		"thememirror": "^2.0.1"
 	}
 }

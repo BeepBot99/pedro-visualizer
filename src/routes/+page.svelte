@@ -15,7 +15,7 @@
 <div class="bg-base-200 m-2 h-full rounded-lg p-4">
   <div class="flex items-center justify-between">
     <h1 class="text-3xl">Autos</h1>
-    <p>
+    <div>
       <ButtonUI Class="border-base-content!" name="Upload auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
         </svg>
       </ButtonUI>
       <NewAuto />
-    </p>
+    </div>
   </div>
   <hr class="my-4 rounded-full" />
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7">

@@ -19,7 +19,7 @@
     : 'border-t-primary'}"
 >
   <h2>{auto.name}</h2>
-  <p>
+  <div>
     <ButtonUI onclick={() => goto(`/auto/${auto.id}`)} Class="border-base-content!" name="Edit auto">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@
         />
       </svg>
     </ButtonUI>
-  </p>
+  </div>
 </div>
 
 <Modal bind:open={deleteModalOpen} title="Delete {auto.name}?">
