@@ -8,12 +8,18 @@
   --bg-secondary: var(--color-neutral-50);
   --bg-tertiary: var(--color-neutral-200);
   --content-main: var(--color-black);
+  --red-contrast-100: var(--color-red-950);
+  --red-contrast-200: var(--color-red-900);
+  --red-contrast-300: var(--color-red-800);
 
   @variant dark {
     --bg-main: var(--color-neutral-950);
     --bg-secondary: var(--color-neutral-900);
     --bg-tertiary: var(--color-neutral-800);
     --content-main: var(--color-white);
+    --red-contrast-100: var(--color-red-100);
+    --red-contrast-200: var(--color-red-200);
+    --red-contrast-300: var(--color-red-300);
   }
 }
 
@@ -23,6 +29,9 @@
   --color-base-300: var(--bg-tertiary);
   --color-base-content: var(--content-main);
   --color-success: var(--color-green-500);
+  --color-red-contrast-100: var(--red-contrast-100);
+  --color-red-contrast-200: var(--red-contrast-200);
+  --color-red-contrast-300: var(--red-contrast-300);
 }
 
 @theme {

@@ -11,23 +11,16 @@
   let sliderValue = $state(0);
 
   onMount(() => {
-    timer.timeline.fromTo(
-      ".slider",
-      {
-        value: 0
-      },
-      {
-        value: 1,
-        duration: 1,
-        ease: "none"
-      },
-      0
-    );
+    timer.addOnUpdate((progress: number) => {
+      sliderValue = progress;
+    });
     hotkeys("space,k", timer.toggle);
     hotkeys("up,down", () => {
       if (timerAtBottom) sendToTop();
       else sendToBottom();
     });
+    hotkeys("left", timer.rewind);
+    hotkeys("right", timer.fastForward);
   });
 
   onDestroy(() => {

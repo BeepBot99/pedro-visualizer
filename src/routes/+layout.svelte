@@ -13,13 +13,16 @@
   });
 </script>
 
-<Navbar
-  navColor={page.data.color}
-  navTab={page.data.tab}
-  autoId={page.data.id}
-/>
+<a
+  href="#main-content"
+  class="absolute top-0 left-0 m-4 -translate-y-96 rounded-md bg-blue-500 p-2 text-white focus:translate-y-0 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none duration-150"
+>
+  Skip to content
+</a>
+
+<Navbar navColor={page.data.color} navTab={page.data.tab} autoId={page.data.id} />
 <div class="h-[calc(100dvh-5rem)]">
-  <main class="h-full">
+  <main class="h-full" id="main-content">
     {@render children()}
   </main>
 </div>

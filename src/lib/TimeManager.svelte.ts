@@ -1,15 +1,24 @@
 ﻿import { gsap } from "gsap";
+type Timeline = gsap.core.Timeline;
 
 export class TimeManager {
-  readonly timeline: gsap.core.Timeline;
+  readonly timeline: Timeline;
   paused: boolean = $state(true);
+  private onUpdate: ((progress: number) => void)[] = [];
 
   constructor() {
     this.timeline = gsap.timeline({
       repeat: -1,
-      paused: true
+      paused: true,
+      onUpdate: () => {
+        this.onUpdate.forEach((callback) => callback(this.timeline.progress()));
+      }
     });
   }
+
+  addOnUpdate = (callback: (progress: number) => void) => {
+    this.onUpdate.push(callback);
+  };
 
   // Arrow function for pause method
   pause = () => {
@@ -36,5 +45,13 @@ export class TimeManager {
   skipTo = (progress: number) => {
     this.pause();
     this.timeline.progress(progress);
+  };
+
+  rewind = () => {
+    this.timeline.progress(this.timeline.progress() <= 0.2 ? 0 : this.timeline.progress() - 0.2);
+  };
+
+  fastForward = () => {
+    this.timeline.progress(this.timeline.progress() >= 0.8 ? 1 : this.timeline.progress() + 0.2);
   };
 }
