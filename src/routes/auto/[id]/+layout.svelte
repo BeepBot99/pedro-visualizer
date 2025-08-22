@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-  <title>{data.auto?.name} | NextFTC++</title>
+  <title>{data.auto?.name} | Pedro Pathing Visualizer</title>
 </svelte:head>
 
 {@render children()}

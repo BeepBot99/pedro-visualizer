@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>Autos | NextFTC++</title>
+  <title>Autos | Pedro Pathing Visualizer</title>
 </svelte:head>
 
 <div class="bg-base-200 m-2 h-full rounded-lg p-4">

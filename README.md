@@ -1,12 +1,12 @@
-﻿# NextFTC++
+﻿# Pedro Pathing Visualizer
 
-NextFTC++ is an autonomous generator for NextFTC and PedroPathing. It was inspired by PathPlanner and the PedroPathing Visualizer.
+The Pedro Pathing Visualizer is a visualizer to visualize paths for Pedro Pathing.
 
 ## Running Locally
 
 ```bash
-git clone https://github.com/BeepBot99/nextftc-plus-plus.git
-cd nextftc-plus-plus
+git clone https://github.com/BeepBot99/pedro-visualizer.git
+cd pedro-visualizer
 npm install
 npm run dev -- --open
 ```
@@ -29,5 +29,5 @@ npm run dev -- --open
 
 ## License
 
-NextFTC++ is licensed under GPLv3. You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
+The Pedro Pathing Visualizer is licensed under the MIT License. You should have received a copy of the MIT License
+along with this program. If not, see <https://mit-license.org/>.

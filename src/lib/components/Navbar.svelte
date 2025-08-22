@@ -14,8 +14,8 @@
     : ''}"
 >
   <div class="flex items-center gap-3">
-    <a href="/" class="font-semibold">NextFTC++</a>
-    <a href="https://github.com/BeepBot99/nextftc-plus-plus" target="_blank" rel="noreferrer">
+    <a href="/" class="font-semibold">Pedro Pathing Visualizer</a>
+    <a href="https://github.com/BeepBot99/pedro-visualizer" target="_blank" rel="noreferrer">
       <svg
         class="size-6"
         fill="currentColor"
