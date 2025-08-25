@@ -20,13 +20,11 @@ export class TimeManager {
     this.onUpdate.push(callback);
   };
 
-  // Arrow function for pause method
   pause = () => {
     this.paused = true;
     this.timeline.pause();
   };
 
-  // Arrow function for play method
   play = () => {
     this.paused = false;
     this.timeline.play();
@@ -41,7 +39,6 @@ export class TimeManager {
     }
   };
 
-  // Arrow function for skipTo method
   skipTo = (progress: number) => {
     this.pause();
     this.timeline.progress(progress);

@@ -13,8 +13,8 @@
 
   let { waypoint = $bindable(), timer, robotVisible = $bindable() }: Props = $props();
 
-  let previousControlBezierPoint: BezierPoint | undefined;
-  let nextControlBezierPoint: BezierPoint | undefined;
+  let previousControlBezierPoint = $state<BezierPoint>();
+  let nextControlBezierPoint = $state<BezierPoint>();
 
   function translateControlPoints(this: Draggable) {
     previousControlBezierPoint?.move({ x: this.deltaX, y: this.deltaY });

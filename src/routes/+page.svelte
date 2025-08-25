@@ -2,7 +2,7 @@
   import AutoCard from "./AutoCard.svelte";
   import { db } from "$lib/db";
   import { liveQuery } from "dexie";
-  import ButtonUI from "$lib/components/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/primitives/ButtonUI.svelte";
   import NewAuto from "./NewAuto.svelte";
 
   let autos = liveQuery(() => db.autos.toArray());
@@ -36,7 +36,7 @@
     </div>
   </div>
   <hr class="my-4 rounded-full" />
-  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5">
     {#if $autos}
       {#if $autos.length > 0}
         {#each $autos as auto (auto.id)}

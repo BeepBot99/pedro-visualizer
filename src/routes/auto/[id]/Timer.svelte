@@ -1,5 +1,5 @@
 ﻿<script lang="ts">
-  import ButtonUI from "$lib/components/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/primitives/ButtonUI.svelte";
   import { gsap } from "gsap";
   import { onDestroy, onMount } from "svelte";
   import type { TimeManager } from "$lib/TimeManager.svelte.js";

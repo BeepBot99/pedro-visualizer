@@ -17,6 +17,7 @@ export type EndPoint = Omit<Waypoint, "handleAfter" | "smooth"> & {
 };
 
 export type PathChain = {
+  name: string;
   startPoint: StartPoint;
   endPoint: EndPoint;
   waypoints: Waypoint[];

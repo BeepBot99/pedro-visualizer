@@ -1,55 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import "tailwindcss";
+
 @plugin '@tailwindcss/forms';
 
 :root {
-  --bg-main: var(--color-neutral-100);
-  --bg-secondary: var(--color-neutral-50);
-  --bg-tertiary: var(--color-neutral-200);
-  --content-main: var(--color-black);
-  --red-contrast-100: var(--color-red-950);
-  --red-contrast-200: var(--color-red-900);
-  --red-contrast-300: var(--color-red-800);
+    --bg-main: var(--color-neutral-100);
+    --bg-secondary: var(--color-neutral-50);
+    --bg-tertiary: var(--color-neutral-200);
+    --content-main: var(--color-black);
+    --red-contrast-100: var(--color-red-950);
+    --red-contrast-200: var(--color-red-900);
+    --red-contrast-300: var(--color-red-800);
 
-  @variant dark {
-    --bg-main: var(--color-neutral-950);
-    --bg-secondary: var(--color-neutral-900);
-    --bg-tertiary: var(--color-neutral-800);
-    --content-main: var(--color-white);
-    --red-contrast-100: var(--color-red-100);
-    --red-contrast-200: var(--color-red-200);
-    --red-contrast-300: var(--color-red-300);
-  }
+    @variant dark {
+        --bg-main: var(--color-neutral-950);
+        --bg-secondary: var(--color-neutral-900);
+        --bg-tertiary: var(--color-neutral-800);
+        --content-main: var(--color-white);
+        --red-contrast-100: var(--color-red-100);
+        --red-contrast-200: var(--color-red-200);
+        --red-contrast-300: var(--color-red-300);
+    }
 }
 
 @theme inline {
-  --color-base-100: var(--bg-main);
-  --color-base-200: var(--bg-secondary);
-  --color-base-300: var(--bg-tertiary);
-  --color-base-content: var(--content-main);
-  --color-success: var(--color-green-500);
-  --color-red-contrast-100: var(--red-contrast-100);
-  --color-red-contrast-200: var(--red-contrast-200);
-  --color-red-contrast-300: var(--red-contrast-300);
+    --color-base-100: var(--bg-main);
+    --color-base-200: var(--bg-secondary);
+    --color-base-300: var(--bg-tertiary);
+    --color-base-content: var(--content-main);
+    --color-success: var(--color-green-500);
+    --color-red-contrast-100: var(--red-contrast-100);
+    --color-red-contrast-200: var(--red-contrast-200);
+    --color-red-contrast-300: var(--red-contrast-300);
 }
 
 @theme {
-  --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif;
-  --color-primary: #005eab;
-  --color-error: #d43232;
+    --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif;
+    --color-primary: #005eab;
+    --color-error: #d43232;
+    --color-link: #2391bb;
 }
 
 body {
-  font-family: var(--font-sans), sans-serif;
-  background-color: var(--color-base-100);
-  color: var(--color-base-content);
+    font-family: var(--font-sans), sans-serif;
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
 }
 
 .slider {
-  @apply [&::-webkit-slider-thumb]:bg-success [&::-webkit-slider-runnable-track]:cursor-pointer [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/10 [&::-webkit-slider-runnable-track]:shadow-inner [&::-webkit-slider-runnable-track]:dark:bg-neutral-700 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full;
+    @apply [&::-webkit-slider-thumb]:bg-success [&::-webkit-slider-runnable-track]:cursor-pointer [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/10 [&::-webkit-slider-runnable-track]:shadow-inner [&::-webkit-slider-runnable-track]:dark:bg-neutral-700 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full;
 }
 
-.cm-editor {
-  @apply rounded-lg;
+.no-scrollbars {
+    @apply [&::-webkit-scrollbar]:hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

@@ -1,9 +1,10 @@
 <script lang="ts">
   import "../app.css";
-  import Navbar from "$lib/components/Navbar.svelte";
+  import Navbar from "./Navbar.svelte";
   import { page } from "$app/state";
   import { onMount } from "svelte";
   import hotkeys from "hotkeys-js";
+
   let { children } = $props();
 
   onMount(() => {
@@ -20,7 +21,7 @@
   Skip to content
 </a>
 
-<Navbar navColor={page.data.color} navTab={page.data.tab} autoId={page.data.id} />
+<Navbar navColor={page.data.color} />
 <div class="h-[calc(100dvh-5rem)]">
   <main class="h-full" id="main-content">
     {@render children()}

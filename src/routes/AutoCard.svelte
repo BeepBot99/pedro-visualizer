@@ -1,12 +1,13 @@
 ﻿<script lang="ts">
-  import ButtonUI from "$lib/components/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/primitives/ButtonUI.svelte";
   import { type Auto, db } from "$lib/db";
-  import Modal from "$lib/components/Modal.svelte";
+  import Modal from "$lib/components/primitives/Modal.svelte";
   import { goto } from "$app/navigation";
 
   let { auto }: { auto: Auto } = $props();
 
   let deleteModalOpen = $state(false);
+
   async function deleteAuto() {
     await db.autos.delete(auto.id);
   }
@@ -18,8 +19,8 @@
     ? 'border-t-error'
     : 'border-t-primary'}"
 >
-  <h2>{auto.name}</h2>
-  <div>
+  <h2 class="whitespace-nowrap overflow-hidden text-ellipsis">{auto.name}</h2>
+  <div class="flex">
     <ButtonUI
       onclick={() => goto(`/auto/${auto.id}`)}
       Class="border-base-content!"
@@ -69,7 +70,8 @@
     <ButtonUI
       Class="bg-primary w-full"
       name="Cancel deletion"
-      onclick={() => (deleteModalOpen = false)}>No</ButtonUI
+      onclick={() => (deleteModalOpen = false)}>No
+    </ButtonUI
     >
   </div>
 </Modal>

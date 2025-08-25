@@ -36,8 +36,6 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@novacbn/svelte-codejar": "^0.1.2",
-		"codejar": "^4.2.0",
 		"dexie": "^4.0.11",
 		"gsap": "^3.12.7",
 		"highlight.js": "^11.11.1",

@@ -1,13 +1,12 @@
 ﻿<script lang="ts">
-  import ButtonUI from "$lib/components/ButtonUI.svelte";
+  import ButtonUI from "$lib/components/primitives/ButtonUI.svelte";
   import { db } from "$lib/db";
-  import Modal from "$lib/components/Modal.svelte";
-  import InputUI from "$lib/components/InputUI.svelte";
-  import SelectUI from "$lib/components/SelectUI.svelte";
+  import Modal from "$lib/components/primitives/Modal.svelte";
+  import InputUI from "$lib/components/primitives/InputUI.svelte";
+  import SelectUI from "$lib/components/primitives/SelectUI.svelte";
 
   let name = $state("");
   let alliance = $state("Red");
-  let language = $state("Kotlin");
 
   let createModalOpen = $state(false);
 
@@ -17,7 +16,7 @@
       .add({
         name,
         alliance: alliance.toLowerCase(),
-        language: language.toLowerCase()
+        pathChains: []
       })
       .catch(console.error);
     console.log(`Auto created with id ${id}`);
@@ -52,9 +51,8 @@
       onmount={(node: HTMLInputElement) => node.focus()}
     />
     <SelectUI options={["Red", "Blue"]} bind:value={alliance} name="Select alliance" />
-    <SelectUI options={["Kotlin", "Java"]} bind:value={language} name="Select language"></SelectUI>
-    <ButtonUI type="button" onclick={createAuto} Class="bg-primary w-full" name="Create"
-      >Create</ButtonUI
-    >
+    <ButtonUI type="button" onclick={createAuto} Class="bg-primary w-full" name="Create">
+      Create
+    </ButtonUI>
   </div>
 </Modal>
