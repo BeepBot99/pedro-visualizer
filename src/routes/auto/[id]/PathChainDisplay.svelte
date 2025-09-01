@@ -73,7 +73,7 @@
     <img class="rounded-lg" src="/images/into-the-deep-field-light.png" alt="Field map" />
   </picture>
   <svg role="region" onmousemove={onSvgMouseMove} onmouseleave={onSvgMouseLeave}
-       class="absolute top-0 left-0 h-full w-full -rotate-90" viewBox="0 0 144 144">
+       class="absolute top-0 left-0 h-full w-full -scale-y-100" viewBox="0 0 144 144">
     <BezierPathChain bind:pathChain timer={timeManager} bind:robotVisible />
     <image bind:this={robot} href="/images/robot.png" width="18" height="18"
            class="z-99 transition-opacity duration-150 {robotVisible ? hoveringOverRobot ? 'opacity-80' : '' : 'hidden'} pointer-events-none" />
