@@ -76,7 +76,7 @@
        class="absolute top-0 left-0 h-full w-full" viewBox="0 0 144 144">
     <BezierPathChain bind:pathChain timer={timeManager} bind:robotVisible />
     <image bind:this={robot} href="/images/robot.png" width="18" height="18"
-           class="z-99 {robotVisible ? hoveringOverRobot ? 'opacity-80' : '' : 'hidden'} pointer-events-none" />
+           class="z-99 transition-opacity duration-150 {robotVisible ? hoveringOverRobot ? 'opacity-80' : '' : 'hidden'} pointer-events-none" />
   </svg>
   <Timer timer={timeManager} />
 </div>

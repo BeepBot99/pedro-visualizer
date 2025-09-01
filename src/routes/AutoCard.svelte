@@ -20,7 +20,7 @@
     : 'border-t-primary'}"
 >
   <h2 class="whitespace-nowrap overflow-hidden text-ellipsis">{auto.name}</h2>
-  <div class="flex">
+  <div class="flex gap-1">
     <ButtonUI
       onclick={() => goto(`/auto/${auto.id}`)}
       Class="border-base-content!"
